@@ -1,0 +1,20 @@
+12 maj 2015
+Vi har fått github att fungera.
+Vi har installerat Window Builder i Eclipse och börjat experimentera med den.
+Absolute Layout började vi med.
+
+Diskussion över klasser osv.
+-	Vill vi ha allt i KeyboardGUI klassen?
+-	Nej
+-	Hur ska vi dela upp det så att det funkar?
+-	Synka filer/namnet(noterna)/graphiska?
+
+
+Göra tangenterna i en for loop.
+-	En for loop för de 8 vita tangenterna (1 oktav) / 16
+-	En for loop för de 5 svarta /10
+-	Array med namnen (se länk: http://stackoverflow.com/questions/20245674/adding-action-to-a-jbutton-when-using-a-for-loop)
+-	En array med notfilerna(som skapas i en annan klass?), så man kan använda sig av den…
+-	Eller behöver vi verkligen namnen?
+
+Behöver vi dela upp mer i olika klasser? Känns som om allt vi planerar känns naturligast att ha i en klasss…?
