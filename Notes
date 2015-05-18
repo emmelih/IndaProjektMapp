@@ -39,4 +39,7 @@ Det kanske inte är så bra, och vi kanske behöver se över vår klassstruktur...
 
 Recorder class?
 Kanske är bra så att vi i alla fall börjar dela upp lite och flytta ut från KeyBoard klassen.. ?
+
+Keyboard är inte så stor, den skapar än så länge fortfarande bara det grafiska.
+Vi skulle iof kanske kunna flytta ut play till en annan klass, som i sin tur håller reda på om sakerna ska recordas...
      

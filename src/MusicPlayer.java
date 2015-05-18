@@ -46,6 +46,27 @@ public class MusicPlayer
     }
     
     /**
+     * Start playing the given array of audio files.
+     * The method returns once the playing has been started.
+     * @param filenames The array of files to be played.
+     */
+    public void startPlaying(String[] filenames){
+    	try{
+    		for (String notefile : filenames){
+    		setupPlayer(notefile);
+    		playFrom(0);
+    		}    		
+    	}
+    	catch(NullPointerException e){
+    		//System.out.println("Nothing recorded yet.");
+    		System.out.println("String[] filenames is empty");  		
+    	}
+    	catch (JavaLayerException ex){
+    		reportProblem();
+    	}
+    }
+    
+    /**
      * Stop playing the current file.
      */
     public void stop()
