@@ -13,11 +13,16 @@ public class KeyboardGUI {
 
 	private JFrame frame;
 	private MusicPlayer notePlayer;
+    private static int width;
+    private static int numOctaves;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+        width = 60;
+        numOctaves = 4;
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -36,6 +41,7 @@ public class KeyboardGUI {
 	public KeyboardGUI() {
 		notePlayer = new MusicPlayer();
 		initialize();
+        //width = 60;
 	}
 
 	/**
@@ -52,42 +58,62 @@ public class KeyboardGUI {
 		 * Creating white keys
 		 */
 		int xw = 0;
-		int xb = 45;
-		int blackToDraw = 2;
-		int drawn = 0;
+        int xb = 0;
 
-		for(int i = 0; i < 25; i++) {
-			JButton buttonb1 = new JButton("b1");
+		for(int i = 0; i < numOctaves*7; i++) {
+			JButton buttonb1 = new JButton("");
 			buttonb1.setBackground(Color.WHITE);
 			buttonb1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			buttonb1.setBounds(xw, 159, 60, 250);
+			buttonb1.setBounds(xw, 159, width, 250);
 			frame.getContentPane().add(buttonb1);
-			xw += 60;
+			xw += width;
 		}
 
 		/**
 		 * Creating black keys
 		 */
-		while (drawn < blackToDraw) {
+		for(int j = 0; j < numOctaves; j++) {
+            // starting position for blacks in octave
+            xb += (3*width/4);
 
-			JButton btnNewButton = new JButton("c1");
-			btnNewButton.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-				}
-			});
-			btnNewButton.setBackground(Color.BLACK);
-			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			btnNewButton.setBounds(xb, 60, 30, 100);
-			frame.getContentPane().add(btnNewButton);
-			xb += 60;
-			drawn += 1;
+            // c & d sharp
+            for(int k = 0; k < 2; k++) {
+                drawBlack(xb);
+                xb += width;
+            }
+
+            // starting position for next three
+            xb += width;
+
+            // f, g, a sharp
+            for(int l = 0; l < 3; l++) {
+                drawBlack(xb);
+                xb += width;
+            }
+
+            // new octave
+            xb += width/4;
 		}
+	}
 
-	}}
+    public void drawBlack(int x){
+        JButton btnNewButton = new JButton("b");
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+            }
+        });
+        btnNewButton.setBackground(Color.BLACK);
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnNewButton.setBounds(x, 60, width/2, 100);
+        frame.getContentPane().add(btnNewButton);
+
+    }
+
+}
