@@ -54,6 +54,7 @@ public class KeyboardGUI {
 		int xw = 0;
 		int xb = 45;
 		int blackToDraw = 2;
+		int drawn = 0;
 
 		for(int i = 0; i < 25; i++) {
 			JButton buttonb1 = new JButton("b1");
@@ -70,8 +71,7 @@ public class KeyboardGUI {
 		/**
 		 * Creating black keys
 		 */
-		for (int j = 0; j < blackToDraw; j++) {
-
+		while (drawn < blackToDraw) {
 
 			JButton btnNewButton = new JButton("c1");
 			btnNewButton.addMouseListener(new MouseAdapter() {
@@ -87,17 +87,7 @@ public class KeyboardGUI {
 			btnNewButton.setBounds(xb, 60, 30, 100);
 			frame.getContentPane().add(btnNewButton);
 			xb += 60;
-
-			if (j == 3){
-				blackToDraw = 2;
-				j = 0;
-				xb += 60;
-			} else if (j == 2) {
-				blackToDraw = 3;
-				j = 0;
-				xb += 60;
-			}
-
+			drawn += 1;
 		}
 
 	}}
