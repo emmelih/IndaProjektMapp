@@ -115,5 +115,4 @@ public class KeyboardGUI {
         frame.getContentPane().add(btnNewButton);
 
     }
-
 }

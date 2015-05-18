@@ -43,3 +43,10 @@ Kanske är bra så att vi i alla fall börjar dela upp lite och flytta ut från KeyB
 Keyboard är inte så stor, den skapar än så länge fortfarande bara det grafiska.
 Vi skulle iof kanske kunna flytta ut play till en annan klass, som i sin tur håller reda på om sakerna ska recordas...
      
+     
+     
+Fråga: Om man itererar över en LinkedList med en foreach-loop, börjar den på index 0 eller sista index.
+Om börjar på sista indexet får vi göra en vanlig forloop i stället. 
+
+
+
