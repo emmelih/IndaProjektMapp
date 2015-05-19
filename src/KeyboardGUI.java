@@ -64,7 +64,7 @@ public class KeyboardGUI {
 			buttonb1.setBackground(Color.WHITE);
 			buttonb1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-                    //notePlayer.startPlaying(c3);
+                    notePlayer.startPlaying("audio/c3.mp3");
 				}
 			});
 			buttonb1.setBounds(xw, 159, width, 250);
@@ -100,7 +100,7 @@ public class KeyboardGUI {
 	}
 
     public void drawBlack(int x){
-        JButton btnNewButton = new JButton("");
+        JButton btnNewButton = new JButton("b");
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
@@ -114,6 +114,5 @@ public class KeyboardGUI {
         btnNewButton.setBounds(x, 60, width/2, 100);
         frame.getContentPane().add(btnNewButton);
 
+    }
 }
-
-		}

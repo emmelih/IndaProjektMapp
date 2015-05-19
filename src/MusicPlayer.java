@@ -5,6 +5,7 @@ import java.io.IOException;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
+import java.util.LinkedList;
 
 /**
  * Provide basic playing of MP3 files via the javazoom library.
@@ -43,6 +44,27 @@ public class MusicPlayer
         catch (JavaLayerException ex) {
             reportProblem();
         }
+    }
+    
+    /**
+     * Start playing the given list of audio files.
+     * The method returns once the playing has been started.
+     * @param filenames The array of files to be played.
+     */
+    public void startPlaying(LinkedList<String> filenames){
+    	try{
+    		for (String notefile : filenames){
+    		setupPlayer(notefile);
+    		playFrom(0);
+    		}    		
+    	}
+    	catch(NullPointerException e){
+    		//System.out.println("Nothing recorded yet.");
+    		System.out.println("LinkedList<String> filenames is empty");  		
+    	}
+    	catch (JavaLayerException ex){
+    		reportProblem();
+    	}
     }
     
     /**

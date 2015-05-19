@@ -18,3 +18,35 @@ Göra tangenterna i en for loop.
 -	Eller behöver vi verkligen namnen?
 
 Behöver vi dela upp mer i olika klasser? Känns som om allt vi planerar känns naturligast att ha i en klasss…?
+
+
+18 maj 2015
+Lovisa gjorde det grafiska genom att skapa tangenterna i loopar. En loop för dom vita och en loop för dom svarta.
+Dom svarta tangenterna är lite mer oregelbundna, vilket var svårare att få till med exakt samma typ av loop, eftersom¨
+det ska finnas mellanrum efter två, sen efter tre, sen efter två osv.
+Lösningen: gör en loop med 5 av de svarta tangenterna.
+Width på tangenten, 60 återanvänds hela tiden, så vi gjorde den till en static som sätts till 60 i main,
+(provade att sätta den till 60 i konstruktorn, funkade inte men också dumt att hårdkoda, vilket funkade).
+
+För att spela upp not-filerna, tänkte vi att vi behövde skapa en Note-klass, som liknar Track klassen,
+och då upptäckte vi att vi i så fall även behöver en klass som liknar TrackReader.
+Men egentligen räcker det med att vi har sökvägen till audiofilen vilket skrivs i form av en sträng (ex: "audio/c3.mp3").
+Då funkade det att spela upp ljud när man trycker på en tangent. Så vi behöver kanske inte skapa någon note-klass.
+
+Som det ser ut nu ligger det allra mesta, förutom MusicPLayer som vi använder oss av, i KeyboardGUI klassen...
+Det kanske inte är så bra, och vi kanske behöver se över vår klassstruktur...
+
+
+Recorder class?
+Kanske är bra så att vi i alla fall börjar dela upp lite och flytta ut från KeyBoard klassen.. ?
+
+Keyboard är inte så stor, den skapar än så länge fortfarande bara det grafiska.
+Vi skulle iof kanske kunna flytta ut play till en annan klass, som i sin tur håller reda på om sakerna ska recordas...
+     
+     
+     
+Fråga: Om man itererar över en LinkedList med en foreach-loop, börjar den på index 0 eller sista index.
+Om börjar på sista indexet får vi göra en vanlig forloop i stället. 
+
+
+
