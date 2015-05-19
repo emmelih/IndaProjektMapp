@@ -46,7 +46,24 @@ Vi skulle iof kanske kunna flytta ut play till en annan klass, som i sin tur hål
      
      
 Fråga: Om man itererar över en LinkedList med en foreach-loop, börjar den på index 0 eller sista index.
-Om börjar på sista indexet får vi göra en vanlig forloop i stället. 
+Om börjar på sista indexet får vi göra en vanlig forloop i stället.
+
+19 maj 2015
+Vi försöker koppla rätt noter till rätt tangenter. Vi tänker att vi skapar en separat scale klass för att dela upp saker.
+Men vi får nullpointer exception när vi skickar in strängar i en arraylist. Vi försöker lösa detta. (strängarna är notfiladresserna).
+
+Vi fick det att funka. Nu har vi upptäckt att noten f4 inte är enkel, vi behöver en ny f4 fil.
+
+ArrayList eller LinkedList?
+Om vi har LinkedList kan vi implementera accord i framtiden, för då kan vi lagra varje accord i en linked list och sedan använda oss av en Hashmap.
+Möjligtvis. 
+
+Recorded klassen fungerar som den ska, tror vi, men play funktionen i musicplayer som ska spela upp elementen i en lista, 
+verkar försöka spela upp alla element samtidigt, och det funkar inte.
+En lösning kan vara att ha någon typ av paus och uppskata tiden som en not fil tar att spela upp.
+Vi kommer ändå behöva implementera tid saker om vi ska ha en blinkande röd plupp.
+
+Vi vill ha bättre grafiskt, med en bakgrund och centrerat keyboard kanske, samt någon typ av startsida.
 
 
 

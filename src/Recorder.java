@@ -71,8 +71,8 @@ public class Recorder{
 	 * 
 	 */
 	public void playRecorded(){
-		toPlay = recorded;
-		recorded.clear();
-		player.startPlaying(toPlay);
+		//toPlay = recorded;
+		//recorded.clear();
+		player.startPlaying(recorded);
 	}
 }

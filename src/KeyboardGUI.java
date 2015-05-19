@@ -13,9 +13,11 @@ public class KeyboardGUI {
 
 	private JFrame frame;
 	private MusicPlayer notePlayer;
+	private Recorder recordMashin;
     private static int width;
     private static int numOctaves;
 	//private static LinkedList<String> whiteScale;
+    //private static String note;
 
 	/**
 	 * Launch the application.
@@ -23,6 +25,7 @@ public class KeyboardGUI {
 	public static void main(String[] args) {
         width = 60;
         numOctaves = 3;
+        //note = "";
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +44,7 @@ public class KeyboardGUI {
 	 */
 	public KeyboardGUI() {
 		notePlayer = new MusicPlayer();
+		recordMashin = new Recorder(notePlayer);
 		initialize();
         //width = 60;
 	}
@@ -53,6 +57,33 @@ public class KeyboardGUI {
 		frame.setBounds(100, 100, 1500, 441);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		
+		/**
+		 * Create record button.
+		 */
+		JButton record = new JButton("RECORD");
+		record.setBackground(Color.GRAY);
+		record.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				recordMashin.startStopRecording();
+			}
+		});
+		record.setBounds(1300, 70, 100, 50);
+		frame.getContentPane().add(record);
+		
+		/**
+		 * Create play recorded button.
+		 */
+		JButton playrecord = new JButton("PLAY RECORDED");
+		playrecord.setBackground(Color.GREEN);
+		playrecord.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				recordMashin.playRecorded();
+			}
+		});
+		playrecord.setBounds(1300, 280, 100, 50);
+		frame.getContentPane().add(playrecord);
 
 
 		/**
@@ -60,14 +91,19 @@ public class KeyboardGUI {
 		 */
 		int xw = 0;
         int xb = 0;
+        Scale scales = new Scale();
+        //String note;
 
 		for(int i = 0; i < numOctaves*7; i++) {
-			String note = getWhiteScale().get(i);
+			String note = scales.getWhiteScale().get(i);
 			JButton buttonb1 = new JButton("");
 			buttonb1.setBackground(Color.WHITE);
 			buttonb1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					notePlayer.startPlaying(note);
+					if (recordMashin.getIfRecording()){
+						recordMashin.saveNotes(note);
+					}
 				}
 			});
 			buttonb1.setBounds(xw, 159, width, 250);
@@ -114,7 +150,7 @@ public class KeyboardGUI {
         frame.getContentPane().add(btnNewButton);
 
     }
-
+    /*
 	public LinkedList<String> getWhiteScale(){
 		LinkedList<String> whiteScale = new LinkedList<String>();
 		for(int i = 3; i < 6; i++) {
@@ -128,5 +164,6 @@ public class KeyboardGUI {
 		}
 		return whiteScale;
 	}
+	*/
 
 }
