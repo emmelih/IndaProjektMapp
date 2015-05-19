@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.util.LinkedList;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -14,13 +15,14 @@ public class KeyboardGUI {
 	private MusicPlayer notePlayer;
     private static int width;
     private static int numOctaves;
+	//private static LinkedList<String> whiteScale;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
         width = 60;
-        numOctaves = 4;
+        numOctaves = 3;
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -60,11 +62,12 @@ public class KeyboardGUI {
         int xb = 0;
 
 		for(int i = 0; i < numOctaves*7; i++) {
+			String note = getWhiteScale().get(i);
 			JButton buttonb1 = new JButton("");
 			buttonb1.setBackground(Color.WHITE);
 			buttonb1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-                    notePlayer.startPlaying("audio/c3.mp3");
+					notePlayer.startPlaying(note);
 				}
 			});
 			buttonb1.setBounds(xw, 159, width, 250);
@@ -81,7 +84,7 @@ public class KeyboardGUI {
 
             // c & d sharp
             for(int k = 0; k < 2; k++) {
-                drawBlack(xb);
+                drawBlack(xb, "audio/c3.mp3");
                 xb += width;
             }
 
@@ -90,7 +93,7 @@ public class KeyboardGUI {
 
             // f, g, a sharp
             for(int l = 0; l < 3; l++) {
-                drawBlack(xb);
+                drawBlack(xb, "audio/c3.mp3");
                 xb += width;
             }
 
@@ -99,20 +102,31 @@ public class KeyboardGUI {
 		}
 	}
 
-    public void drawBlack(int x){
+    public void drawBlack(int x, String filename){
         JButton btnNewButton = new JButton("b");
-        btnNewButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-            }
-        });
         btnNewButton.setBackground(Color.BLACK);
         btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
+			public void actionPerformed(ActionEvent e) {
+				notePlayer.startPlaying(filename);
+			}
         });
         btnNewButton.setBounds(x, 60, width/2, 100);
         frame.getContentPane().add(btnNewButton);
 
     }
+
+	public LinkedList<String> getWhiteScale(){
+		LinkedList<String> whiteScale = new LinkedList<String>();
+		for(int i = 3; i < 6; i++) {
+			whiteScale.add("audio/c" + i + ".mp3");
+			whiteScale.add("audio/d" + i + ".mp3");
+			whiteScale.add("audio/e" + i + ".mp3");
+			whiteScale.add("audio/f" + i + ".mp3");
+			whiteScale.add("audio/g" + i + ".mp3");
+			whiteScale.add("audio/a" + i + ".mp3");
+			whiteScale.add("audio/b" + i + ".mp3");
+		}
+		return whiteScale;
+	}
+
 }
