@@ -75,13 +75,13 @@ public class Recorder{
 	 * 
 	 */
 	public void playRecorded(){
-		if (!playing){
 			playing = true;
 			player.startPlaying(recorded, 50);
-		}
-		else {
-			playing = false;
-		}
+	}
+	
+	public void stopPlaying(){
+		player.stop();
+		playing = false;
 	}
 	
 	/**

@@ -54,23 +54,26 @@ public class KeyboardGUI {
 	private void initialize() {
 
 		frame = new JFrame("The Piano");
+		//frame=new ImageJFrame();
 		frame.setBounds(100, 100, 2000, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(153, 204, 129));
+		//frame.setBackground();
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.CENTER;
-
+		
 		
 
 		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
 		pianoPanel.setPreferredSize(new Dimension(1500, 440));
-		pianoPanel.setBackground(Color.white);
-		pianoPanel.setOpaque(false);
+		//pianoPanel.setBackground();
+		//pianoPanel.setBackground(Color.white);
+		//pianoPanel.setOpaque(false);
 		pianoPanel.setSize(pianoPanel.getPreferredSize());
-		frame.add(pianoPanel);
+		//frame.getContentPane().add(pianoPanel);
 
 		JOptionPane startpane = new JOptionPane();
 		startpane.setSize(1000, 1000);
@@ -115,17 +118,44 @@ public class KeyboardGUI {
 		 */
 		JButton playrecord = new JButton("PLAY RECORDED");
 		playrecord.setBackground(new Color(51, 153, 102));
-		playrecord.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
+		playrecord.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
 				if (recordMashin.getPlaying()){
-					notePlayer.stop();
+					stop();
 				}
 				recordMashin.playRecorded();
 			}
 		});
+		/*playrecord.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				recordMashin.playRecorded();
+			}
+		});*/
 
 		playrecord.setBounds(1300, 280, 100, 50);
 		pianoPanel.add(playrecord);
+		
+		/**
+		 * Create stop playing recorded button.
+		 */
+		JButton stopplayrecord = new JButton("STOP PLAY RECORDED");
+		stopplayrecord.setBackground(new Color(51, 153, 102));
+		stopplayrecord.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				stop();
+			}
+		});
+		
+		/*stopplayrecord.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+					stop();
+				}
+			});*/
+
+		stopplayrecord.setBounds(1300, 350, 100, 50);
+		pianoPanel.add(stopplayrecord);
 
 
 		/**
@@ -184,6 +214,40 @@ public class KeyboardGUI {
             xb += width/4;
 		}
 		
+		/*
+		 * testing Overlay
+		 */
+		/*ImageJFrame panel1 = new ImageJFrame();
+		LayoutManager overlay1 = new OverlayLayout(panel1);
+		panel1.setLayout(overlay1);
+		panel1.setBounds(100, 100, 2000, 700);
+		//panel1.setBackground();*/
+		
+		ImageJFrame panel = new ImageJFrame();
+		LayoutManager overlay = new OverlayLayout(panel);
+		panel.setLayout(overlay);
+		panel.setPreferredSize(new Dimension(1900, 600));
+		panel.setBackground();
+		
+		pianoPanel.setBackground(Color.white);
+		pianoPanel.setOpaque(false);
+		
+		//panel1.add(panel);
+		panel.add(pianoPanel);
+		
+		
+		//panel.add(pianoPanel);
+		//panel.add(panel1);
+		
+		//panel1.add(panel);
+		
+		//panel.add(pianoPanel);
+		
+		
+		frame.getContentPane().add(panel);
+		//panel.add(pianoPanel);
+		//frame.getContentPane().add(panel1);
+		
 	}
 
     public void drawBlack(int x, String filename){
@@ -196,6 +260,11 @@ public class KeyboardGUI {
 		});
         btnNewButton.setBounds(x, 60, width / 2, 100);
 		pianoPanel.add(btnNewButton);
+    }
+    
+    private void stop()
+    {
+        notePlayer.stop();
     }
 
 }

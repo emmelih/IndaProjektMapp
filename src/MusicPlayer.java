@@ -61,13 +61,13 @@ public class MusicPlayer
     		for (String notefile : filenames){
     			setupPlayer(notefile);
     			player.play(getLength());
+    			//startPlaying (notefile);
     			
     			TimeUnit.MILLISECONDS.sleep(pause);
     		}    		
     	}
     	catch(NullPointerException e){
-    		//System.out.println("Nothing recorded yet.");
-    		System.out.println("LinkedList<String> filenames is empty");  		
+    		System.out.println("Nothing to Play.");		
     	}
     	catch (JavaLayerException ex){
     		reportProblem();
