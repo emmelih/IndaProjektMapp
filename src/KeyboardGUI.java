@@ -56,13 +56,13 @@ public class KeyboardGUI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1500, 441);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		
 		/**
 		 * Create record button.
 		 */
 		JButton record = new JButton("RECORD");
+		record.setBounds(1300, 70, 100, 50);
 		record.setBackground(Color.GRAY);
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -76,6 +76,7 @@ public class KeyboardGUI {
 		 * Create play recorded button.
 		 */
 		JButton playrecord = new JButton("PLAY RECORDED");
+		playrecord.setBounds(1300, 280, 100, 50);
 		playrecord.setBackground(Color.GREEN);
 		playrecord.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
