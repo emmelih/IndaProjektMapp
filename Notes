@@ -55,7 +55,7 @@ Men vi får nullpointer exception när vi skickar in strängar i en arraylist. Vi f
 Vi fick det att funka. Nu har vi upptäckt att noten f4 inte är enkel, vi behöver en ny f4 fil.
 
 ArrayList eller LinkedList?
-Om vi har LinkedList kan vi implementera accord i framtiden, för då kan vi lagra varje accord i en linked list och sedan använda oss av en Hashmap.
+Om vi har LinkedList kan vi implementera ackord i framtiden, för då kan vi lagra varje accord i en linked list och sedan använda oss av en Hashmap.
 Möjligtvis. 
 
 Recorded klassen fungerar som den ska, tror vi, men play funktionen i musicplayer som ska spela upp elementen i en lista, 
@@ -65,5 +65,5 @@ Vi kommer ändå behöva implementera tid saker om vi ska ha en blinkande röd plupp
 
 Vi vill ha bättre grafiskt, med en bakgrund och centrerat keyboard kanske, samt någon typ av startsida.
 
-
+Det grafiska var lite klurigt då mängden buttons är ganska stor.
 
