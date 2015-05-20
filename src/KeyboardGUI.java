@@ -8,12 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Graphics;
-
+import javax.swing.JPanel;
 
 public class KeyboardGUI {
 
 	private JFrame frame;
 	private OurJPanel pianoPanel;
+	private JLabel label;
 	private MusicPlayer notePlayer;
 	private Recorder recordMashin;
     private static int width;
@@ -45,18 +46,18 @@ public class KeyboardGUI {
 		notePlayer = new MusicPlayer();
 		recordMashin = new Recorder(notePlayer);
 		initialize();
-        //width = 60;
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+			/**
+             * Initialize the contents of the frame.
+             */
 	private void initialize() {
+
 		frame = new JFrame("The Piano");
-		frame.setBounds(100, 100, 2000, 1500);
+		frame.setBounds(100, 100, 2000, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridBagLayout());
-		frame.getContentPane().setBackground(new Color(50, 100 ,255));
+		frame.getContentPane().setBackground(new Color(153, 204, 129));
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.CENTER;
@@ -66,15 +67,22 @@ public class KeyboardGUI {
 		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
 		pianoPanel.setPreferredSize(new Dimension(1500, 440));
-		pianoPanel.setBackground(Color.green);
+		pianoPanel.setBackground(Color.white);
+		pianoPanel.setOpaque(false);
 		pianoPanel.setSize(pianoPanel.getPreferredSize());
 		frame.add(pianoPanel);
+
+		JOptionPane startpane = new JOptionPane();
+		startpane.setSize(1000, 1000);
+		startpane.showMessageDialog(frame,
+				"THIS IS THE PIANO \n Press OK to start playing \n by Lovisa von Heijne and Emmeli Hansson",
+				"The Piano", JOptionPane.PLAIN_MESSAGE);
 
 		/**
 		 * Create record button.
 		 */
 		JButton record = new JButton("RECORD");
-		record.setBackground(Color.GRAY);
+		record.setBackground(new Color(153, 51, 51));
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				recordMashin.startStopRecording();
@@ -106,7 +114,7 @@ public class KeyboardGUI {
 		 * Create play recorded button.
 		 */
 		JButton playrecord = new JButton("PLAY RECORDED");
-		playrecord.setBackground(Color.GREEN);
+		playrecord.setBackground(new Color(51, 153, 102));
 		playrecord.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if (recordMashin.getPlaying()){
