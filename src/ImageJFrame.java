@@ -17,7 +17,7 @@ public class ImageJFrame extends JFrame {
     }
 
     public void setBackground() {
-        ImageIcon icon = new ImageIcon("audio/tree.jpg");
+        ImageIcon icon = new ImageIcon("audio/bg3.jpg");
         Image image = icon.getImage();
         this.image = image;
         repaint();
