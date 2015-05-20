@@ -16,8 +16,6 @@ public class KeyboardGUI {
 	private Recorder recordMashin;
     private static int width;
     private static int numOctaves;
-	//private static LinkedList<String> whiteScale;
-    //private static String note;
 
 	/**
 	 * Launch the application.
@@ -25,7 +23,6 @@ public class KeyboardGUI {
 	public static void main(String[] args) {
         width = 60;
         numOctaves = 3;
-        //note = "";
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -114,14 +111,18 @@ public class KeyboardGUI {
 		/**
 		 * Creating black keys
 		 */
+		int counter = 0;
 		for(int j = 0; j < numOctaves; j++) {
+
+
             // starting position for blacks in octave
             xb += (3*width/4);
 
             // c & d sharp
             for(int k = 0; k < 2; k++) {
-                drawBlack(xb, "audio/c3.mp3");
+                drawBlack(xb, scales.getBlackScale().get(counter));
                 xb += width;
+				counter += 1;
             }
 
             // starting position for next three
@@ -129,8 +130,9 @@ public class KeyboardGUI {
 
             // f, g, a sharp
             for(int l = 0; l < 3; l++) {
-                drawBlack(xb, "audio/c3.mp3");
+                drawBlack(xb, scales.getBlackScale().get(counter));
                 xb += width;
+				counter += 1;
             }
 
             // new octave
@@ -139,7 +141,7 @@ public class KeyboardGUI {
 	}
 
     public void drawBlack(int x, String filename){
-        JButton btnNewButton = new JButton("b");
+        JButton btnNewButton = new JButton("");
         btnNewButton.setBackground(Color.BLACK);
         btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
