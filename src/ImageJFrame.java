@@ -7,15 +7,20 @@ import java.awt.*;
 
 
 public class ImageJFrame extends JFrame {
-        private Image image;
-        public ImagePanel(Image image) {
-            this.image = image;
-        }
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.repaint(g);
-            g.drawImage(image, 0, 0, this);
-        }
+
+    Image image;
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawImage(image, 0, 0, this);
+    }
+
+    public void setBackground() {
+        ImageIcon icon = new ImageIcon("audio/tree.jpg");
+        Image image = icon.getImage();
+        this.image = image;
+        repaint();
     }
 
 }
