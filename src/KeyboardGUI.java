@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Graphics;
 
 
 public class KeyboardGUI {
@@ -53,6 +54,8 @@ public class KeyboardGUI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1500, 441);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
 		
 		
 		/**
@@ -64,23 +67,40 @@ public class KeyboardGUI {
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				recordMashin.startStopRecording();
+				if (recordMashin.getIfRecording()){
+				}
 			}
 		});
-		record.setBounds(1300, 70, 100, 50);
 		frame.getContentPane().add(record);
+		
+		
+		/**
+		 * Create clear recorded button.
+		 */
+		JButton clearrecord = new JButton("Clear recorded");
+		clearrecord.setBounds(1300, 150, 150, 30);
+		clearrecord.setBackground(Color.GRAY);
+		clearrecord.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				recordMashin.clearRecording();
+			}
+		});
+		frame.getContentPane().add(clearrecord);
 		
 		/**
 		 * Create play recorded button.
 		 */
 		JButton playrecord = new JButton("PLAY RECORDED");
-		playrecord.setBounds(1300, 280, 100, 50);
+		playrecord.setBounds(1300, 280, 150, 50);
 		playrecord.setBackground(Color.GREEN);
 		playrecord.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				if (recordMashin.getPlaying()){
+					notePlayer.stop();
+				}
 				recordMashin.playRecorded();
 			}
 		});
-		playrecord.setBounds(1300, 280, 100, 50);
 		frame.getContentPane().add(playrecord);
 
 
