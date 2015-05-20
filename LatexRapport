@@ -1,0 +1,204 @@
+\documentclass[a4paper,10pt,twoside]{article}
+\def\theauthor{Emmeli Hansson och Lovisa von Heijne}
+\def\coursename{Introduktion till datalogi}
+\def\course{DD1339} 
+\def\thedate{\today}
+
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+\usepackage[inner=3cm,top=3cm,outer=2cm,bottom=3cm]{geometry} % Det här fixar så att den har en bra bredd och att det är samma bredd på alla sidor
+\usepackage[T1]{fontenc}
+%\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[thinlines]{easytable}
+\definecolor{dark-blue}{rgb}{0, 0, 0.6}
+\usepackage{hyperref}
+\usepackage[final]{pdfpages}
+% Nedanstående funkar inte i praktiken, kanske någon annan kan klura ut
+\hypersetup{
+  colorlinks=true, 
+  linkcolor=dark-blue,
+  urlcolor=dark-blue
+}
+
+% Här definierar man färger, de här är standardfärgerna för java, som de syns i exempelvis BlueJ. Iaf enligt xmas, har tagit de från honom
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+% Här definierar man alltså hur det ska se ut när den fixar koden
+% De flesta saker säger sig själva vad de betyder. Finns eventuellt fler saker också.
+\usepackage{listings}
+\lstset{language=Java,
+	basicstyle=\ttfamily,
+	% Här anges alltså vilka färger som ska användas. Vill ni inte ha färger, kommentera ut nästföljande fyra rader.
+	keywordstyle=\color{javapurple}\bfseries,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	numbers=left, % Fixar radnumrering i vänstermarginalen
+	numberstyle=\footnotesize,
+	%title=\lstname,
+	showstringspaces=false,
+	fancyvrb=true,
+	extendedchars=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4 %Indenteringsstorlek
+}
+
+% Fixar så man kan ha åäö i kodkommentarer
+\lstset{literate={ö}{{\"o}}1
+	{ä}{{\"a}}1
+	{å}{{\aa}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Å}{{\AA}}1
+}
+
+% Header och footer
+\pagestyle{fancy}\headheight 13pt
+\fancyfoot{}
+\lhead{\course\ -\ Projektplan}
+\rhead{\theauthor\ -\ \thedate}
+\fancyfoot[LE,RO]{\thepage}
+\title{Projektplan - \course\ \coursename}
+\date{\thedate}
+\author{\theauthor}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\arraystretch}{2}
+
+%---------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+{\noindent\Huge\bfseries Projektplan}\\[2\baselineskip] % Title
+{\large \textit{DD1339 - Introduktion till Datalogi}}\\[4\baselineskip] % Tagline or further description
+{\Large \textsc{Emmeli Hansson}} % Author name
+\\[0.5\baselineskip]
+{\Large \textsc{Lovisa von Heijne}} % Author name
+
+\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+{\noindent Vårtermin 2015}\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
+%----------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+\thispagestyle{empty}
+
+
+\titleGM % This command includes the title page
+
+
+
+
+
+%-----------------------------------------------------------
+
+
+\section*{Programbeskrivning }
+
+Programmet syftar till att underlätta det individuella arbete som kompletterar ordinarie repetitioner i körsång.
+
+När du som körsångare ska repetera själv finns det två sätt som är enklast. Antingen sätter du dig vid ett piano och spelar din och möjligtvis även andra stämmor och sjunger till detta, eller så går du runt och lyssnar på och sjunger till en inspelning. Något som är väldigt skönt är dock om metoderna går att blanda - dvs. att du ibland kan stödja din stämma genom att spela den när du lyssnar och sjunger till en inspelning.
+
+En annan situation som inte sällan uppkommer när individerna i en kör ska gå från att ha repat tillsammans till att repa själva är att man vill ha en inspelning av sin stämma. Detta löses allt som ofta genom att en person spelar stämman och ett antal personer spelar in den med sin mobil medan resten av kören måste stå väldigt tyst. Mer praktiskt hade varit om det under stämrep enkelt kunde spelas in filer med stämmorna i datorn som sedan mailas ut.\\
+
+Vårt mål är ett program som har:
+\begin{itemize}
+\item ett brukbart keyboard (piano
+\item möjligheten att spela upp en musikfil (i första hand)
+\item möjligheten att spela in en musikfil med hjälp av keyboardet (i andra hand)
+\end{itemize}
+
+\section*{Användarbeskrivning}
+Användargruppen till detta program är kanske främst yngre körsångare, som är ganska datorvana och gärna använder datorn som underlättande medel för inlärning. Det är en mottaglig grupp som är van att arbeta individuellt och i grupp. 
+
+\section*{Användarscenarion}
+Scenario 1: Hanna, 18, sitter hemma i soffan, med sina kompisar i klassrummet, på tunnelbanan eller egentligen vilken yta som helst som saknar ett fysiskt piano. Hon vill kolla sin stämma innan repet med kören imorgon och kan enkelt starta programmet på sin dator. 
+
+Scenario 2: Tenorerna i kören Vox upptäcker att de alla sjunger lite olika i andra takten, första systemet på sida 4 i Auringon Noustessa och skulle vilja spela in två takter som de kan lyssna på så att alla kan lära sig rätt. Under ett stämrep hemma hos Anders går de igenom stämmorna a capella, med lite pianostöd. Inför, under eller precis efter repet spelar Anders in första och andra takten och sparar en fil med stämman så att alla tenorerna kan få denna och lära sig hur stämman går.
+
+\section*{Testplan för användartester}
+Be en körsångare att spela upp en fil, och sen spela stämmorna samtidigt genom att slå rätt tangenter. Spela upp filen igen, men denna gång även spela in stämmorna som hen slår. Sedan be hen spela upp den sparade filen med stämmor.
+Även be körsångaren att prova att bara spela på tangenterna på vårat virtuella keyboard.  
+
+\section*{Programdesign}
+
+\includegraphics[width=10cm]{klassdiagram.JPG}
+
+I Keyboards main skapas alla objekt av typ Note (vilket är de olika tangenterna som motsvaras av tangenter,alltså bokstäver, på datorns keyboard). Vi tänker att dessa skulle kunna sparas i en datastrukur som till exempel en Map av något slag så att input från tangentbordet kallar på det lagrade värdet med en key eller något liknande.
+
+Recorder är den klass som skulle kunna användas till att spela in det som spelas på tangentbordet och MusicOrganizer med tillhörande klasser används för att skapa programmets musikspelare.
+
+\section*{Tekniska frågor}
+En första fråga som vi måste lösa är hur man kan implementera Mediaspelare. Detta gjordes i uppgift 4 på hösten, så vi kan antingen  använda oss av eller inspireras av den implementationen.
+ 
+Ännu en fråga är hur vi gör det grafiska gränssnittet. Vi har tänkt att vi ska använd oss av Swing som det står om i kapitel 11 i Objects First with Java.
+
+Hur vi på bästa sätt skapar ett keyboard är också en fråga. De flesta virtuella pianon kan bara spela en ton åt gången och även vi tänker oss denna avgränsning. Ännu ett frågetecken är hur input för att spela på ska fungera. Ett alternativ är att ge input med mustryck, men av erfarenhet är det svårt att spela sammanhängande på det sättet. Vi skulle även kunna implementera input från datorns tangentbord, där varje pianotangent motsvarar en tangent på datorn. Detta är av erfarenhet lite enklare, när användaren väl har vant sig.
+
+Vilka filer och typer av filer ska mediaspelaren kunna spela upp? Vi börjar med att bara ha ett bibliotek inbyggt, med ett begränsat antal filer som kan spelas upp.
+
+\section*{Arbetsplan}
+
+Se bilaga på nästa sida. 
+
+\includepdf[pages=1, landscape]{gantt.pdf}
+
+
+
+
+%\lstinputlisting{TestLinkedList.java}
+
+
+\newpage
+
+\thispagestyle{empty}
+
+\section*{Lägesrapport 1}
+Inför projektets start har vi brainstormat projektidéer och användargrupper och samlat teknisk information som bakgrund för vårt utförande. 
+
+Vi har börjat se efter vilka kunskaper vi har tidigare från året som vi kan ta med oss in i projektet, och vilka vi kommer att behöva komplettera. Vi har bl.a. behövt läsa på om grafiska gränssnitt och hur dessa byggs i java, men även studerat lite musikteori och redan existerande virtuella keyboards för att kunna brainstorma idéer över vad som är rimligt att göra på det keyboard vi tänkt programmera. Vi har även skissat på klassdiagram och funderat över hur vår implementation ska vara strukturerad och vad som ska vara i vilka klasser osv.
+
+Vi har nu mer exakta idéer över hur och vad vi vill kunna göra med vårt virtuella keyboard,vilket innebär att vi har kunnat begränsa vår användargrupp. Det innebär att vi också ordentligt tänkt igenom hur vi kan användartesta vårt program senare, samt hur vi ska få tag på testpersoner. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
