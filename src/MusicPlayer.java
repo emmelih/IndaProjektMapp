@@ -2,10 +2,13 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
+
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
+
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Provide basic playing of MP3 files via the javazoom library.
@@ -50,12 +53,16 @@ public class MusicPlayer
      * Start playing the given list of audio files.
      * The method returns once the playing has been started.
      * @param filenames The array of files to be played.
+     * @param pause Time to wait between notes
      */
-    public void startPlaying(LinkedList<String> filenames){
+    public void startPlaying(LinkedList<String> filenames, int pause){
     	try{
+    		
     		for (String notefile : filenames){
-    		setupPlayer(notefile);
-    		playFrom(0);
+    			setupPlayer(notefile);
+    			player.play(getLength());
+    			
+    			TimeUnit.MILLISECONDS.sleep(pause);
     		}    		
     	}
     	catch(NullPointerException e){
@@ -63,6 +70,9 @@ public class MusicPlayer
     		System.out.println("LinkedList<String> filenames is empty");  		
     	}
     	catch (JavaLayerException ex){
+    		reportProblem();
+    	}
+    	catch (InterruptedException e){
     		reportProblem();
     	}
     }

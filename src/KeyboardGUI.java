@@ -9,14 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Graphics;
 import javax.swing.JPanel;
-
-
 
 public class KeyboardGUI {
 
 	private JFrame frame;
-	private JPanel pianoPanel;
+	private OurJPanel pianoPanel;
 	private JLabel label;
 	private MusicPlayer notePlayer;
 	private Recorder recordMashin;
@@ -67,7 +66,9 @@ public class KeyboardGUI {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.CENTER;
 
-		pianoPanel = new JPanel();
+		
+
+		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
 		pianoPanel.setPreferredSize(new Dimension(1500, 440));
 		pianoPanel.setBackground(Color.white);
@@ -89,10 +90,29 @@ public class KeyboardGUI {
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				recordMashin.startStopRecording();
+				boolean recording=recordMashin.getIfRecording();
+				pianoPanel.draw(recording);
 			}
 		});
+
 		record.setBounds(1300, 70, 100, 50);
 		pianoPanel.add(record);
+		
+		
+		
+		/**
+		 * Create clear recorded button.
+		 */
+		JButton clearrecord = new JButton("Clear recorded");
+		clearrecord.setBounds(1300, 150, 150, 30);
+		clearrecord.setBackground(Color.GRAY);
+		clearrecord.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				recordMashin.clearRecording();
+			}
+		});
+
+		pianoPanel.add(clearrecord);
 		
 		/**
 		 * Create play recorded button.
@@ -101,9 +121,13 @@ public class KeyboardGUI {
 		playrecord.setBackground(new Color(51, 153, 102));
 		playrecord.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				if (recordMashin.getPlaying()){
+					notePlayer.stop();
+				}
 				recordMashin.playRecorded();
 			}
 		});
+
 		playrecord.setBounds(1300, 280, 100, 50);
 		pianoPanel.add(playrecord);
 
@@ -163,6 +187,7 @@ public class KeyboardGUI {
             // new octave
             xb += width/4;
 		}
+		
 	}
 
     public void drawBlack(int x, String filename){

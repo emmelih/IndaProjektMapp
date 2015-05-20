@@ -11,6 +11,7 @@ import java.util.LinkedList;
 public class Recorder{
 	
 	boolean recording;
+	boolean playing;
 	LinkedList<String> recorded;
 	LinkedList<String> toPlay;
 	MusicPlayer player;
@@ -26,6 +27,7 @@ public class Recorder{
 		recorded = new LinkedList<String>();
 		toPlay = new LinkedList<String>();
 		recording = false;
+		playing = false;
 		
 	}
 	
@@ -39,8 +41,10 @@ public class Recorder{
 		if (recording == false){
 			recording = true;
 		}
+		//stop recording
 		else if(recording == true){
 			recording = false;
+			
 		}
 	}
 	
@@ -66,13 +70,32 @@ public class Recorder{
 	}
 	
 	/**
-	 * Plays recorded notes from recorded list and empties the recorded list
-	 * so that new notes can be recorded.
+	 * Plays recorded notes from recorded list and changes the playing boolean to true if
+	 * something is playing.
 	 * 
 	 */
 	public void playRecorded(){
-		//toPlay = recorded;
-		//recorded.clear();
-		player.startPlaying(recorded);
+		if (!playing){
+			playing = true;
+			player.startPlaying(recorded, 50);
+		}
+		else {
+			playing = false;
+		}
+	}
+	
+	/**
+	 * To check if the recorded list is playing.
+	 * @return playing True if something is playing.
+	 */
+	public boolean getPlaying(){
+		return playing;
+	}
+	
+	/**
+	 * Clears the recorded list.
+	 */
+	public void clearRecording(){
+		recorded.clear();
 	}
 }
