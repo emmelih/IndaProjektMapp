@@ -13,7 +13,7 @@ import java.awt.Graphics;
 public class KeyboardGUI {
 
 	private JFrame frame;
-	private JPanel pianoPanel;
+	private OurJPanel pianoPanel;
 	private MusicPlayer notePlayer;
 	private Recorder recordMashin;
     private static int width;
@@ -63,7 +63,7 @@ public class KeyboardGUI {
 
 		
 
-		pianoPanel = new JPanel();
+		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
 		pianoPanel.setPreferredSize(new Dimension(1500, 440));
 		pianoPanel.setBackground(Color.green);
@@ -78,13 +78,14 @@ public class KeyboardGUI {
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				recordMashin.startStopRecording();
-				if (recordMashin.getIfRecording()){
-				}
+				boolean recording=recordMashin.getIfRecording();
+				pianoPanel.draw(recording);
 			}
 		});
 
 		record.setBounds(1300, 70, 100, 50);
 		pianoPanel.add(record);
+		
 		
 		
 		/**
@@ -174,6 +175,7 @@ public class KeyboardGUI {
             // new octave
             xb += width/4;
 		}
+		
 	}
 
     public void drawBlack(int x, String filename){
