@@ -1,7 +1,9 @@
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -55,10 +57,12 @@ public class KeyboardGUI {
 	private void initialize() {
 
 		frame = new JFrame("The Piano");
-		frame.setBounds(100, 100, 2000, 700);
+		//frame.setBounds(100, 100, 2000, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(153, 204, 129));
+
+
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.CENTER;
@@ -74,7 +78,7 @@ public class KeyboardGUI {
 		JOptionPane startpane = new JOptionPane();
 		startpane.setSize(1000, 1000);
 		startpane.showMessageDialog(frame,
-				"THIS IS THE PIANO \n Press OK to start playing \n by Lovisa von Heijne and Emmeli Hansson",
+				"THIS IS THE PIANO \n by Lovisa von Heijne and Emmeli Hansson \n Press OK to start playing",
 				"The Piano", JOptionPane.PLAIN_MESSAGE);
 
 		/**
