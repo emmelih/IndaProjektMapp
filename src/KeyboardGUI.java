@@ -62,9 +62,6 @@ public class KeyboardGUI {
 		c.fill = GridBagConstraints.CENTER;
 
 		
-//<<<<<<< HEAD
-		
-//=======
 
 		pianoPanel = new JPanel();
 		pianoPanel.setLayout(null);
@@ -73,12 +70,10 @@ public class KeyboardGUI {
 		pianoPanel.setSize(pianoPanel.getPreferredSize());
 		frame.add(pianoPanel);
 
-//>>>>>> be6882c0870cc31f9f0c2f192efab1dcd929b506
 		/**
 		 * Create record button.
 		 */
 		JButton record = new JButton("RECORD");
-		//record.setBounds(1300, 70, 100, 50);
 		record.setBackground(Color.GRAY);
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -87,12 +82,9 @@ public class KeyboardGUI {
 				}
 			}
 		});
-//<<<<<<< HEAD
-		//frame.getContentPane().add(record);
-//=======
+
 		record.setBounds(1300, 70, 100, 50);
 		pianoPanel.add(record);
-//>>>>>>> be6882c0870cc31f9f0c2f192efab1dcd929b506
 		
 		
 		/**
@@ -106,14 +98,13 @@ public class KeyboardGUI {
 				recordMashin.clearRecording();
 			}
 		});
-		//frame.getContentPane().add(clearrecord);
+
 		pianoPanel.add(clearrecord);
 		
 		/**
 		 * Create play recorded button.
 		 */
 		JButton playrecord = new JButton("PLAY RECORDED");
-		//playrecord.setBounds(1300, 280, 150, 50);
 		playrecord.setBackground(Color.GREEN);
 		playrecord.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -123,12 +114,9 @@ public class KeyboardGUI {
 				recordMashin.playRecorded();
 			}
 		});
-//<<<<<<< HEAD
-		//frame.getContentPane().add(playrecord);
-//=======
+
 		playrecord.setBounds(1300, 280, 100, 50);
 		pianoPanel.add(playrecord);
-//>>>>>>> be6882c0870cc31f9f0c2f192efab1dcd929b506
 
 
 		/**
