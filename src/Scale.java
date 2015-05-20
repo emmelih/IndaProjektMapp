@@ -20,9 +20,23 @@ public class Scale {
             whiteScale.add("audio/b" + i + ".mp3");
         }
 
+        blackScale = new LinkedList<String>();
+        for(int i = 3; i < 6; i++){
+            blackScale.add("audio/cc" + i + ".mp3");
+            blackScale.add("audio/dd" + i + ".mp3");
+            blackScale.add("audio/ff" + i + ".mp3");
+            blackScale.add("audio/gg" + i + ".mp3");
+            blackScale.add("audio/aa" + i + ".mp3");
+        }
+
     }
 
     public LinkedList<String> getWhiteScale () {
         return whiteScale;
     }
+
+    public LinkedList<String> getBlackScale () {
+        return blackScale;
+    }
+
 }
