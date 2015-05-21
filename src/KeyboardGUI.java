@@ -1,7 +1,9 @@
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -12,9 +14,9 @@ import javax.swing.JPanel;
 
 public class KeyboardGUI {
 
-	private JFrame frame;
+	private ImageJFrame frame;
 	private OurJPanel pianoPanel;
-	private JLabel label;
+	private ImageJFrame backgroundPanel;
 	private MusicPlayer notePlayer;
 	private Recorder recordMashin;
     private static int width;
@@ -45,7 +47,26 @@ public class KeyboardGUI {
 	public KeyboardGUI() {
 		notePlayer = new MusicPlayer();
 		recordMashin = new Recorder(notePlayer);
+		initalizeFrame();
 		initialize();
+	}
+
+	private void initalizeFrame(){
+		frame = new ImageJFrame();
+		//frame.setBounds(100, 100, 2000, 700);
+		frame.setSize(1500, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new GridBagLayout());
+		frame.setBackground();
+
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.CENTER;
+
+		JOptionPane startpane = new JOptionPane();
+		startpane.showMessageDialog(frame,
+				"\n THIS IS THE PIANO \n by Lovisa von Heijne and Emmeli Hansson \n Press OK to start playing",
+				"The Piano", JOptionPane.PLAIN_MESSAGE);
+
 	}
 
 			/**
@@ -53,6 +74,7 @@ public class KeyboardGUI {
              */
 	private void initialize() {
 
+<<<<<<< HEAD
 		frame = new JFrame("The Piano");
 		//frame=new ImageJFrame();
 		frame.setBounds(100, 100, 2000, 700);
@@ -65,6 +87,12 @@ public class KeyboardGUI {
 		c.fill = GridBagConstraints.CENTER;
 		
 		
+=======
+		//frame.getContentPane().setBackground(new Color(153, 204, 129));
+
+
+
+>>>>>>> 57e546ae70b740a8c98c67857d76785d9b97cd80
 
 		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
@@ -75,11 +103,6 @@ public class KeyboardGUI {
 		pianoPanel.setSize(pianoPanel.getPreferredSize());
 		//frame.getContentPane().add(pianoPanel);
 
-		JOptionPane startpane = new JOptionPane();
-		startpane.setSize(1000, 1000);
-		startpane.showMessageDialog(frame,
-				"THIS IS THE PIANO \n Press OK to start playing \n by Lovisa von Heijne and Emmeli Hansson",
-				"The Piano", JOptionPane.PLAIN_MESSAGE);
 
 		/**
 		 * Create record button.
@@ -169,6 +192,7 @@ public class KeyboardGUI {
 		for(int i = 0; i < numOctaves*7; i++) {
 			String note = scales.getWhiteScale().get(i);
 			JButton buttonb1 = new JButton("");
+			//buttonb1.setAlwaysOnTop(true);
 			buttonb1.setBackground(Color.WHITE);
 			buttonb1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -260,7 +284,7 @@ public class KeyboardGUI {
 				notePlayer.startPlaying(filename);
 			}
 		});
-        btnNewButton.setBounds(x, 60, width / 2, 100);
+		btnNewButton.setBounds(x, 60, width / 2, 100);
 		pianoPanel.add(btnNewButton);
     }
     

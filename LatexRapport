@@ -70,7 +70,7 @@
 % Header och footer
 \pagestyle{fancy}\headheight 13pt
 \fancyfoot{}
-\lhead{\course\ -\ Projektplan}
+\lhead{\course\ -\ Projektrapport}
 \rhead{\theauthor\ -\ \thedate}
 \fancyfoot[LE,RO]{\thepage}
 \title{Projektplan - \course\ \coursename}
@@ -121,8 +121,9 @@
 %-----------------------------------------------------------
 
 
-\section*{Programbeskrivning }
+\section{Programbeskrivning}
 
+\subsection*{A - Projektplanen}
 Programmet syftar till att underlätta det individuella arbete som kompletterar ordinarie repetitioner i körsång.
 
 När du som körsångare ska repetera själv finns det två sätt som är enklast. Antingen sätter du dig vid ett piano och spelar din och möjligtvis även andra stämmor och sjunger till detta, eller så går du runt och lyssnar på och sjunger till en inspelning. Något som är väldigt skönt är dock om metoderna går att blanda - dvs. att du ibland kan stödja din stämma genom att spela den när du lyssnar och sjunger till en inspelning.
@@ -131,32 +132,68 @@ En annan situation som inte sällan uppkommer när individerna i en kör ska gå frå
 
 Vårt mål är ett program som har:
 \begin{itemize}
-\item ett brukbart keyboard (piano
+\item ett brukbart keyboard (piano)
 \item möjligheten att spela upp en musikfil (i första hand)
 \item möjligheten att spela in en musikfil med hjälp av keyboardet (i andra hand)
 \end{itemize}
 
-\section*{Användarbeskrivning}
+\subsection*{B - Vad som hände}
+Under projektets gång insåg vi att det fanns vissa begränsningar i vad vi skulle hinna med. Därför avgränsade vi oss till två av de mål vi ställt upp: det första och sista. Det blev inte heller så att det som spelats in kan laddas ned som en fil - däremot går den att spela upp upprepade gånger i programmet. Det är visserligen inte en lika flexibel funktion som den vi först tänkt ut, men likaväl praktisk då repetition är grunden till all inlärning.
+
+Vårt slutgiltiga program har alltså två huvudsakliga funktioner: Ett virtuellt piano som spänner över tre oktaver (precis rätt sådana för damstämmor dessutom) samt möjligheten att spela in och spela upp melodier.
+
+\subsection*{C - Jämförelse}
+När programbeskrivningen först skrevs var utgångspunkten två olika problemsituationer som skulle kunna lösas. Det fanns lite idéer om hur detta skulle kunna göras, men efter hand förändrades dessa. Detta berodde kanske främst på att tidsåtgången för att implementera grafiken var större än först beräknad.
+
+\section{Användarbeskrivning}
+\subsection*{A - Projektplanen}
 Användargruppen till detta program är kanske främst yngre körsångare, som är ganska datorvana och gärna använder datorn som underlättande medel för inlärning. Det är en mottaglig grupp som är van att arbeta individuellt och i grupp. 
 
-\section*{Användarscenarion}
+\subsection*{B - Vad som hände}
+Användargruppen för det program som producerades är densamma som var tilltänkt i projektplanen. Funktionerna som implementerats är något annorlunda från de tidigare föreslagna, men kan ändock användas för stäminlärning.
+
+\subsection*{C - Jämförelse}
+Den största skillnaden i användargrupp är att programmet som faktiskt producerades är något mer användbart för individuell inlärning än grupprepetitioner. En ursprunglig idé var nämligen att kunna ladda ned inspelade musikfiler, men då detta inte implementerats lämpar sig programmet kanske mer för den användare som ensam vill arbeta med en specifik takt eller två ett flertal gånger vid samma tillfälle - ett scenario som ganska sällan uppkommer vid repetitioner i grupp.
+
+\section{Användarscenarion}
+\subsection*{A - Projektplan}
 Scenario 1: Hanna, 18, sitter hemma i soffan, med sina kompisar i klassrummet, på tunnelbanan eller egentligen vilken yta som helst som saknar ett fysiskt piano. Hon vill kolla sin stämma innan repet med kören imorgon och kan enkelt starta programmet på sin dator. 
 
 Scenario 2: Tenorerna i kören Vox upptäcker att de alla sjunger lite olika i andra takten, första systemet på sida 4 i Auringon Noustessa och skulle vilja spela in två takter som de kan lyssna på så att alla kan lära sig rätt. Under ett stämrep hemma hos Anders går de igenom stämmorna a capella, med lite pianostöd. Inför, under eller precis efter repet spelar Anders in första och andra takten och sparar en fil med stämman så att alla tenorerna kan få denna och lära sig hur stämman går.
 
-\section*{Testplan för användartester}
+\subsection*{B - Vad som hände}
+Det första scenariot förblev aktuellt, men därtill tillkom ett scenario där en person ensam upprepande repeterar en slinga av toner.
+
+\subsection*{C - Jämförelse}
+Det första scenariot blev aktuellt, men inte det andra då programmets funktioner ändrades. Därmed tillkom även det scenario som omnämndes i del 3B.
+
+
+\section{Testplan för användartester}
+\subsection*{A - Projektplan}
 Be en körsångare att spela upp en fil, och sen spela stämmorna samtidigt genom att slå rätt tangenter. Spela upp filen igen, men denna gång även spela in stämmorna som hen slår. Sedan be hen spela upp den sparade filen med stämmor.
+
 Även be körsångaren att prova att bara spela på tangenterna på vårat virtuella keyboard.  
 
-\section*{Programdesign}
+\subsection*{B - Vad som hände}
+testresultat och en analys av dessa. Den här typen av post mortem är ett utmärkt tillfälle att reflektera över hur projektet gick och att lära sig så mycket som möjligt för framtiden
 
+\subsection*{C - Jämförelse}
+
+\section{Programdesign}
+\subsection*{A - Projektplan}
 \includegraphics[width=10cm]{klassdiagram.JPG}
 
 I Keyboards main skapas alla objekt av typ Note (vilket är de olika tangenterna som motsvaras av tangenter,alltså bokstäver, på datorns keyboard). Vi tänker att dessa skulle kunna sparas i en datastrukur som till exempel en Map av något slag så att input från tangentbordet kallar på det lagrade värdet med en key eller något liknande.
 
 Recorder är den klass som skulle kunna användas till att spela in det som spelas på tangentbordet och MusicOrganizer med tillhörande klasser används för att skapa programmets musikspelare.
 
-\section*{Tekniska frågor}
+\subsection*{B - Vad som hände}
+
+
+\subsection*{C - Jämförelse}
+
+\section{Tekniska frågor}
+\subsection*{A - Projektplan}
 En första fråga som vi måste lösa är hur man kan implementera Mediaspelare. Detta gjordes i uppgift 4 på hösten, så vi kan antingen  använda oss av eller inspireras av den implementationen.
  
 Ännu en fråga är hur vi gör det grafiska gränssnittet. Vi har tänkt att vi ska använd oss av Swing som det står om i kapitel 11 i Objects First with Java.
@@ -165,40 +202,60 @@ Hur vi på bästa sätt skapar ett keyboard är också en fråga. De flesta virtuella 
 
 Vilka filer och typer av filer ska mediaspelaren kunna spela upp? Vi börjar med att bara ha ett bibliotek inbyggt, med ett begränsat antal filer som kan spelas upp.
 
-\section*{Arbetsplan}
+\subsection*{B - Vad som hände}
+Den första tröskeln i projektet var att sätta sig in i den mängd olika grafiska implementationer som finns i java – var skulle vi börja? Detta löste vi genom att använda oss av WindowBuilder i Eclipse för att skapa en frame med en button – därifrån kodade vi sedan allting själva
 
-Se bilaga på nästa sida. 
+Ytterligare en tröskel var att börja använda GitHub, men det fick vi koll på efter några dagar. Det tog lite längre än det hade behövt göra om vi inte hade använt olika editors – Emmeli Eclipse och Lovisa IntelliJ. Vi fick dock båda ganska bra koll och rutiner relativt snabbt eftersom vi använt det lite tidigare, vilket var jätteskönt.
+
+Eftersom programmets huvudfunktion är pianot var detta det vi gjorde först. Det sporrade diskussion gällande klassuppdelning och hur toner skulle synkroniseras med GUI:t. Det slutade med att vi använder oss av en klass Scale som läser in filerna och att denna klass används i KeybordGUI, då tangenterna skapas grafiskt.
+
+Tangenterna skapas enkelt genom att skapa buttons i loopar. Eftersom de vita tangenterna är mycket regelbundna var dessa ganska enkla att skapa och koppla – för de svarta använde vi en hjälpmetod för att undvika för mycket kodupprepning. Då fick vi också tänka till lite extra när ljudfilerna skulle kopplas.
+
+Vi kom också fram till att användandet av de egentliga tonbeteckningarna var överflödigt – filnamnen på den pianofont vi laddat ned var systematiska och därför kunde vi använda oss av dessa för att lägga in alla tonfiler i en array. En fråga som kom upp var vilken struktur vi skulle använda, men bestämde oss för att använda linked list eftersom vi har idéer för hur detta skulle kunna användas i framtiden.
+
+Vi har också behövt reflektera över hårdkodning, då alla tangenter skulle vara lika stora och så vidare.
+
+För att spela upp notfilerna tänkte vi i början använda oss an en Note-klass, liknande den Track-klass som används i BlueJprojektet MusicOrganizer. Det visade sig dock att detta inte behövdes eftersom det räcker det med att vi har sökvägen till audiofilen vilket skrivs i form av en sträng (ex: "audio/c3.mp3"). Då funkade det att spela upp ljud när man trycker på en tangent. Så vi behöver kanske inte skapa någon note-klass.
+
+En klass skapades även för Recorderfunktionen. Till en början låg mycket av våra funktioner i KeyboardGUI men de har börjat flyttas ut.
+
+Recorded klassen fungerar som den ska, tror vi, men play funktionen i musicplayer som ska spela upp elementen i en lista, 
+
+verkar försöka spela upp alla element samtidigt, och det funkar inte.
+En lösning kan vara att ha någon typ av paus och uppskata tiden som en not fil tar att spela upp.
+
+Vi kommer ändå behöva implementera tid saker om vi ska ha en blinkande röd plupp.
+
+Vi vill ha bättre grafiskt, med en bakgrund och centrerat keyboard kanske, samt någon typ av startsida.
+
+Det grafiska var lite klurigt då mängden buttons är ganska stor.
+
+Layers. Det enda jag säger alltså.
+
+
+\subsection*{C - Jämförelse}
+
+Något vi funderade på mycket i början var hur input till tangenterna skulle se. Då projektplanen skrevs var idén att ha input via tangentbordet, men vi insåg snabbt att detta var ganska begränsande - inte minst i antal tangenter. Därför valde vi att ha input via musklick.
+
+I början funderade vi också mycket över hur tangentbordet och tonfilerna skulle lagras, vilket var mycket bra. Däremot hade vi kanske behövt börja fundera över det grafiska lite tidigare.
+
+\section{Arbetsplan}
+
+Se bilagor för avsnitt A och B i denna ordning på nästa sida. 
+
+\subsection*{C - Jämförelse}
 
 \includepdf[pages=1, landscape]{gantt.pdf}
 
+\section{Sammanfattning}
+Slutrapporten ska också innehålla ett avsnitt 8 med titeln sammanfattning. Här ska ni beskriva vad ni har lärt er av projektet. Om ni har planer på att utveckla projektet ytterligare så vill vi gärna höra om era idéer. 
 
+Swing
 
-
-%\lstinputlisting{TestLinkedList.java}
-
+\section{Fullständig kod}
 
 \newpage
 
 \thispagestyle{empty}
-
-\section*{Lägesrapport 1}
-Inför projektets start har vi brainstormat projektidéer och användargrupper och samlat teknisk information som bakgrund för vårt utförande. 
-
-Vi har börjat se efter vilka kunskaper vi har tidigare från året som vi kan ta med oss in i projektet, och vilka vi kommer att behöva komplettera. Vi har bl.a. behövt läsa på om grafiska gränssnitt och hur dessa byggs i java, men även studerat lite musikteori och redan existerande virtuella keyboards för att kunna brainstorma idéer över vad som är rimligt att göra på det keyboard vi tänkt programmera. Vi har även skissat på klassdiagram och funderat över hur vår implementation ska vara strukturerad och vad som ska vara i vilka klasser osv.
-
-Vi har nu mer exakta idéer över hur och vad vi vill kunna göra med vårt virtuella keyboard,vilket innebär att vi har kunnat begränsa vår användargrupp. Det innebär att vi också ordentligt tänkt igenom hur vi kan användartesta vårt program senare, samt hur vi ska få tag på testpersoner. 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \end{document}

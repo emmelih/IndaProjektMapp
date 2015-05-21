@@ -7,7 +7,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-public class OurJPanel extends JPanel {
+public class OurJPanel extends JLayeredPane {
 	private boolean recording;
 	
 	@Override
