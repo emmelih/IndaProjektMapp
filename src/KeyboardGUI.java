@@ -217,11 +217,12 @@ public class KeyboardGUI {
 		/*
 		 * testing Overlay
 		 */
-		/*ImageJFrame panel1 = new ImageJFrame();
+		/*
+		ImageJFrame panel1 = new ImageJFrame();
 		LayoutManager overlay1 = new OverlayLayout(panel1);
 		panel1.setLayout(overlay1);
-		panel1.setBounds(100, 100, 2000, 700);
-		//panel1.setBackground();*/
+		panel1.setPreferredSize(new Dimension(200, 50));
+		panel1.setBackground();*/
 		
 		ImageJFrame panel = new ImageJFrame();
 		LayoutManager overlay = new OverlayLayout(panel);
@@ -232,8 +233,9 @@ public class KeyboardGUI {
 		pianoPanel.setBackground(Color.white);
 		pianoPanel.setOpaque(false);
 		
-		//panel1.add(panel);
+		
 		panel.add(pianoPanel);
+		//panel.add(panel1);
 		
 		
 		//panel.add(pianoPanel);
