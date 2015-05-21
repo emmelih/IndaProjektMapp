@@ -6,6 +6,10 @@
   */
 
 public class ImageJFrame extends JPanel {
+	
+	public ImageJFrame(){
+		super();
+	}
 
 
     Image image;

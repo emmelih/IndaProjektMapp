@@ -1,20 +1,18 @@
 import java.awt.*;
-import java.io.IOException;
-import java.util.LinkedList;
+
 
 import javax.swing.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Graphics;
-import javax.swing.JPanel;
 
 public class KeyboardGUI {
 
 	private JFrame frame;
 	private OurJPanel pianoPanel;
-	private JLabel label;
 	private MusicPlayer notePlayer;
 	private Recorder recordMashin;
     private static int width;
@@ -53,9 +51,10 @@ public class KeyboardGUI {
              */
 	private void initialize() {
 
-		frame = new JFrame("The Piano - By Lovisa von Heine and Emmeli Hansson");
+		frame = new JFrame("The Piano");
 		//frame=new ImageJFrame();
 		frame.setBounds(50, 50, 1800, 700);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(153, 204, 129));
@@ -64,37 +63,62 @@ public class KeyboardGUI {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.CENTER;
 		
-		
 
 		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
 		pianoPanel.setPreferredSize(new Dimension(1500, 440));
-		//pianoPanel.setBackground();
-		//pianoPanel.setBackground(Color.white);
-		//pianoPanel.setOpaque(false);
 		pianoPanel.setSize(pianoPanel.getPreferredSize());
-		//frame.getContentPane().add(pianoPanel);
-
-	/*	JOptionPane startpane = new JOptionPane();
-		startpane.setSize(1000, 1000);
-		startpane.showMessageDialog(frame,
-				"THIS IS THE PIANO \n Press OK to start playing \n by Lovisa von Heijne and Emmeli Hansson",
-				"The Piano", JOptionPane.PLAIN_MESSAGE);
-*/
+		pianoPanel.addKeyListener(new OurJPanel(){
+			@Override
+			public void keyPressed(KeyEvent e){
+				int key = e.getKeyCode();
+				if (key == KeyEvent.VK_ENTER){
+					stop();
+				}
+			}
+		});
+		
+		int changex = 150;
+		int changey = 130;
+		
+		/**
+		 * Add a little text description
+		 */
+		JTextArea text = new JTextArea("Here's a Piano. Feel free to play!");
+		text.setEditable(false);
+		Font f = new Font("Poor Richard", Font.BOLD, 40);
+		text.setFont(f);
+		text.setBackground(Color.WHITE);
+		text.setOpaque(false);
+		text.setBounds(600, 30, 700, 50);
+		pianoPanel.add(text);
+		
+		JTextArea text2 = new JTextArea("Created by Lovisa von Heine and Emmeli Hansson");
+		text2.setEditable(false);
+		Font f1 = new Font("Poor Richard", Font.PLAIN, 20);
+		text2.setFont(f1);
+		text2.setBackground(Color.WHITE);
+		text2.setOpaque(false);
+		text2.setBounds(670, 100, 700, 40);
+		pianoPanel.add(text2);
+		
 		/**
 		 * Create record button.
 		 */
 		JButton record = new JButton("RECORD");
-		record.setBackground(new Color(153, 51, 51));
+		Font f2 = new Font("Poor Richard", Font.PLAIN, 20);
+		record.setFont(f2);
+		//record.setBackground(new Color(205, 201, 201));
+		record.setBackground(new Color(205, 85, 85));
 		record.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				recordMashin.startStopRecording();
 				boolean recording=recordMashin.getIfRecording();
-				pianoPanel.draw(recording);
+				pianoPanel.draw(recording, changex, changey);
 			}
 		});
 
-		record.setBounds(1300, 70, 100, 50);
+		record.setBounds(1300+changex, 70+changey, 150, 50);
 		pianoPanel.add(record);
 		
 		
@@ -103,8 +127,9 @@ public class KeyboardGUI {
 		 * Create clear recorded button.
 		 */
 		JButton clearrecord = new JButton("Clear recorded");
-		clearrecord.setBounds(1300, 150, 150, 30);
-		clearrecord.setBackground(Color.GRAY);
+		clearrecord.setBounds(1300+changex, 150+changey, 150, 30);
+		clearrecord.setFont(f2);
+		clearrecord.setBackground(new Color(205, 201, 201));
 		clearrecord.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				recordMashin.clearRecording();
@@ -116,14 +141,15 @@ public class KeyboardGUI {
 		/**
 		 * Create play recorded button.
 		 */
-		JButton playrecord = new JButton("PLAY RECORDED");
-		playrecord.setBackground(new Color(51, 153, 102));
+		JButton playrecord = new JButton("Play Recorded");
+		playrecord.setBackground(new Color(32, 178, 170));
+		playrecord.setFont(f2);
 		playrecord.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if (recordMashin.getPlaying()){
+				/*if (recordMashin.getPlaying()){
 					stop();
-				}
+				}*/
 				recordMashin.playRecorded();
 			}
 		});
@@ -133,14 +159,15 @@ public class KeyboardGUI {
 			}
 		});*/
 
-		playrecord.setBounds(1300, 280, 100, 50);
+		playrecord.setBounds(1300+changex, 280+changey, 150, 50);
 		pianoPanel.add(playrecord);
 		
 		/**
 		 * Create stop playing recorded button.
 		 */
-		JButton stopplayrecord = new JButton("STOP PLAY RECORDED");
-		stopplayrecord.setBackground(new Color(51, 153, 102));
+		JButton stopplayrecord = new JButton("STOP");
+		stopplayrecord.setBackground(new Color(32, 178, 170));
+		stopplayrecord.setFont(f2);
 		stopplayrecord.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -154,17 +181,18 @@ public class KeyboardGUI {
 				}
 			});*/
 
-		stopplayrecord.setBounds(1300, 350, 100, 50);
+		stopplayrecord.setBounds(1300+changex, 350+changey, 150, 50);
 		pianoPanel.add(stopplayrecord);
 
 
 		/**
 		 * Creating white keys
 		 */
-		int xw = 0;
-        int xb = 0;
+		int xw = changex;
+        int xb = changex;
+        int yw = 159+changey;
+        int yb = 60+changey;
         Scale scales = new Scale();
-        //String note;
 
 		for(int i = 0; i < numOctaves*7; i++) {
 			String note = scales.getWhiteScale().get(i);
@@ -178,7 +206,7 @@ public class KeyboardGUI {
 					}
 				}
 			});
-			buttonb1.setBounds(xw, 159, width, 250);
+			buttonb1.setBounds(xw, yw, width, 250);
 			pianoPanel.add(buttonb1);
 			xw += width;
 		}
@@ -195,7 +223,7 @@ public class KeyboardGUI {
 
             // c & d sharp
             for(int k = 0; k < 2; k++) {
-                drawBlack(xb, scales.getBlackScale().get(counter));
+                drawBlack(xb, yb, scales.getBlackScale().get(counter));
                 xb += width;
 				counter += 1;
             }
@@ -205,7 +233,7 @@ public class KeyboardGUI {
 
             // f, g, a sharp
             for(int l = 0; l < 3; l++) {
-                drawBlack(xb, scales.getBlackScale().get(counter));
+                drawBlack(xb, yb, scales.getBlackScale().get(counter));
                 xb += width;
 				counter += 1;
             }
@@ -217,17 +245,11 @@ public class KeyboardGUI {
 		/*
 		 * testing Overlay
 		 */
-		/*
-		ImageJFrame panel1 = new ImageJFrame();
-		LayoutManager overlay1 = new OverlayLayout(panel1);
-		panel1.setLayout(overlay1);
-		panel1.setPreferredSize(new Dimension(200, 50));
-		panel1.setBackground();*/
 		
 		ImageJFrame panel = new ImageJFrame();
 		LayoutManager overlay = new OverlayLayout(panel);
 		panel.setLayout(overlay);
-		panel.setPreferredSize(new Dimension(1780, 650));
+		panel.setPreferredSize(new Dimension(1793, 665));
 		panel.setBackground();
 		
 		pianoPanel.setBackground(Color.white);
@@ -239,24 +261,12 @@ public class KeyboardGUI {
 		panel.add(pianoPanel);
 		
 		
-		//panel.add(panel1);
-		
-		
-		//panel.add(pianoPanel);
-		//panel.add(panel1);
-		
-		//panel1.add(panel);
-		
-		//panel.add(pianoPanel);
-		
 		
 		frame.getContentPane().add(panel);
-		//panel.add(pianoPanel);
-		//frame.getContentPane().add(panel1);
 		
 	}
 
-    public void drawBlack(int x, String filename){
+    public void drawBlack(int x,int y, String filename){
         JButton btnNewButton = new JButton("");
         btnNewButton.setBackground(Color.BLACK);
         btnNewButton.addActionListener(new ActionListener() {
@@ -264,7 +274,7 @@ public class KeyboardGUI {
 				notePlayer.startPlaying(filename);
 			}
 		});
-        btnNewButton.setBounds(x, 60, width / 2, 100);
+        btnNewButton.setBounds(x, y, width / 2, 100);
 		pianoPanel.add(btnNewButton);
     }
     
