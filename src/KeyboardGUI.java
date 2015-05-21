@@ -53,9 +53,9 @@ public class KeyboardGUI {
              */
 	private void initialize() {
 
-		frame = new JFrame("The Piano");
+		frame = new JFrame("The Piano - By Lovisa von Heine and Emmeli Hansson");
 		//frame=new ImageJFrame();
-		frame.setBounds(100, 100, 2000, 700);
+		frame.setBounds(50, 50, 1800, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(153, 204, 129));
@@ -75,12 +75,12 @@ public class KeyboardGUI {
 		pianoPanel.setSize(pianoPanel.getPreferredSize());
 		//frame.getContentPane().add(pianoPanel);
 
-		JOptionPane startpane = new JOptionPane();
+	/*	JOptionPane startpane = new JOptionPane();
 		startpane.setSize(1000, 1000);
 		startpane.showMessageDialog(frame,
 				"THIS IS THE PIANO \n Press OK to start playing \n by Lovisa von Heijne and Emmeli Hansson",
 				"The Piano", JOptionPane.PLAIN_MESSAGE);
-
+*/
 		/**
 		 * Create record button.
 		 */
@@ -227,14 +227,18 @@ public class KeyboardGUI {
 		ImageJFrame panel = new ImageJFrame();
 		LayoutManager overlay = new OverlayLayout(panel);
 		panel.setLayout(overlay);
-		panel.setPreferredSize(new Dimension(1900, 600));
+		panel.setPreferredSize(new Dimension(1780, 650));
 		panel.setBackground();
 		
 		pianoPanel.setBackground(Color.white);
 		pianoPanel.setOpaque(false);
 		
+
+		
 		
 		panel.add(pianoPanel);
+		
+		
 		//panel.add(panel1);
 		
 		
