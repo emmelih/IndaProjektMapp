@@ -11,11 +11,14 @@ import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * This class is used in its entirety as it is written for the Object First with Java book, apart for the additional starPlaying method(LinkedList<String> filenames, int pause) which enables playing files from a list of the file adresses, with a small pause of int pause Milliseconds.
+ * 
+ * 
  * Provide basic playing of MP3 files via the javazoom library.
  * See http://www.javazoom.net/
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @author Emmeli Hansson and Lovisa von Heine
+ * @version 2015.05.18
  */
 public class MusicPlayer
 {

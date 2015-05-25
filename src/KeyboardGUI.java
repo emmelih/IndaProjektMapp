@@ -9,6 +9,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
+/**
+ * This class is the class that runs the virtual keyboard. It's where the Graphical User Interface is and all the JButtons that make up the keyboard are. 
+ * 
+ * @author Emmeli Hansson and Lovisa von Heine 
+ * @date 2015-05-13
+ *
+ */
 public class KeyboardGUI {
 
 	private JFrame frame;
@@ -52,18 +60,18 @@ public class KeyboardGUI {
 	private void initialize() {
 
 		frame = new JFrame("The Piano");
-		//frame=new ImageJFrame();
 		frame.setBounds(50, 50, 1800, 700);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridBagLayout());
 		frame.getContentPane().setBackground(new Color(153, 204, 129));
-		//frame.setBackground();
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.CENTER;
 		
-
+		/*
+		 * The JPanel on which the keyboard keys and additional buttons are created.
+		 */
 		pianoPanel = new OurJPanel();
 		pianoPanel.setLayout(null);
 		pianoPanel.setPreferredSize(new Dimension(1500, 440));
@@ -78,10 +86,13 @@ public class KeyboardGUI {
 			}
 		});
 		
+		/*
+		 * The change on the x axis and y axis, to move all buttons by the same distance.
+		 */
 		int changex = 150;
 		int changey = 130;
 		
-		/**
+		/*
 		 * Add a little text description
 		 */
 		JTextArea text = new JTextArea("Here's a Piano. Feel free to play!");
@@ -102,8 +113,8 @@ public class KeyboardGUI {
 		text2.setBounds(670, 100, 700, 40);
 		pianoPanel.add(text2);
 		
-		/**
-		 * Create record button.
+		/*
+		 * Create a record button.
 		 */
 		JButton record = new JButton("RECORD");
 		Font f2 = new Font("Poor Richard", Font.PLAIN, 20);
@@ -123,8 +134,8 @@ public class KeyboardGUI {
 		
 		
 		
-		/**
-		 * Create clear recorded button.
+		/*
+		 * Create a clear recorded button.
 		 */
 		JButton clearrecord = new JButton("Clear recorded");
 		clearrecord.setBounds(1300+changex, 150+changey, 150, 30);
@@ -138,8 +149,8 @@ public class KeyboardGUI {
 
 		pianoPanel.add(clearrecord);
 		
-		/**
-		 * Create play recorded button.
+		/*
+		 * Create a play recorded button.
 		 */
 		JButton playrecord = new JButton("Play Recorded");
 		playrecord.setBackground(new Color(32, 178, 170));
@@ -147,23 +158,15 @@ public class KeyboardGUI {
 		playrecord.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				/*if (recordMashin.getPlaying()){
-					stop();
-				}*/
 				recordMashin.playRecorded();
 			}
 		});
-		/*playrecord.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				recordMashin.playRecorded();
-			}
-		});*/
 
 		playrecord.setBounds(1300+changex, 280+changey, 150, 50);
 		pianoPanel.add(playrecord);
 		
-		/**
-		 * Create stop playing recorded button.
+		/*
+		 * Create a stop playing file button (doesn't work for the playing recorded list action).
 		 */
 		JButton stopplayrecord = new JButton("STOP");
 		stopplayrecord.setBackground(new Color(32, 178, 170));
@@ -174,18 +177,12 @@ public class KeyboardGUI {
 				stop();
 			}
 		});
-		
-		/*stopplayrecord.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-					stop();
-				}
-			});*/
 
 		stopplayrecord.setBounds(1300+changex, 350+changey, 150, 50);
 		pianoPanel.add(stopplayrecord);
 
 
-		/**
+		/*
 		 * Creating white keys
 		 */
 		int xw = changex;
@@ -193,7 +190,8 @@ public class KeyboardGUI {
         int yw = 159+changey;
         int yb = 60+changey;
         Scale scales = new Scale();
-
+        
+        //The loop used to create all white keys.
 		for(int i = 0; i < numOctaves*7; i++) {
 			String note = scales.getWhiteScale().get(i);
 			JButton buttonb1 = new JButton("");
@@ -211,7 +209,7 @@ public class KeyboardGUI {
 			xw += width;
 		}
 
-		/**
+		/*
 		 * Creating black keys
 		 */
 		int counter = 0;
@@ -221,7 +219,7 @@ public class KeyboardGUI {
             // starting position for blacks in octave
             xb += (3*width/4);
 
-            // c & d sharp
+            // loop for c & d sharp
             for(int k = 0; k < 2; k++) {
                 drawBlack(xb, yb, scales.getBlackScale().get(counter));
                 xb += width;
@@ -231,7 +229,7 @@ public class KeyboardGUI {
             // starting position for next three
             xb += width;
 
-            // f, g, a sharp
+            // loop for f, g, a sharp
             for(int l = 0; l < 3; l++) {
                 drawBlack(xb, yb, scales.getBlackScale().get(counter));
                 xb += width;
@@ -243,10 +241,10 @@ public class KeyboardGUI {
 		}
 		
 		/*
-		 * testing Overlay
+		 * Overlay of the pianoPanel onto a new panel whichin turn is added to the frame.
 		 */
 		
-		ImageJFrame panel = new ImageJFrame();
+		ImageJPanel panel = new ImageJPanel();
 		LayoutManager overlay = new OverlayLayout(panel);
 		panel.setLayout(overlay);
 		panel.setPreferredSize(new Dimension(1793, 665));
@@ -255,17 +253,20 @@ public class KeyboardGUI {
 		pianoPanel.setBackground(Color.white);
 		pianoPanel.setOpaque(false);
 		
-
-		
-		
 		panel.add(pianoPanel);
-		
-		
 		
 		frame.getContentPane().add(panel);
 		
 	}
-
+	
+	
+	/**
+	 * Help metod for creating the black keys.
+	 * 
+	 * @param x the x koordinate on which the key will be created.
+	 * @param y the y koordinate on which the key will be created.
+	 * @param filename the file adress to the right note file.
+	 */
     public void drawBlack(int x,int y, String filename){
         JButton btnNewButton = new JButton("");
         btnNewButton.setBackground(Color.BLACK);
@@ -278,9 +279,14 @@ public class KeyboardGUI {
 		pianoPanel.add(btnNewButton);
     }
     
+    /**
+     * Helpmethod to kill the MusicPlayer and stop playing (doesn't work for the play recorded list, but does work for stop playing a key that has just been pressed).
+     * 
+     */
     private void stop()
     {
-        notePlayer.stop();
+    	recordMashin.stopPlaying();
+        //notePlayer.stop();
     }
 
 }

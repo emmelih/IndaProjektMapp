@@ -3,9 +3,10 @@ import java.util.LinkedList;
 
 
 /**
- * This class records and plays the keyboardkeys pressed.
+ * This class records and plays the keyboardKeys pressed.
  * 
- * @author emmeli
+ * @author Emmeli Hansson and Lovisa von Heine
+ * @date 2015-05-14
  *
  */
 public class Recorder{
@@ -32,8 +33,7 @@ public class Recorder{
 	}
 	
 	/**
-	 * Starts and stops recording depending on if the boolean recorded
-	 * is true or false. 
+	 * Starts and stops recording depending on if the boolean recorded is true or false. 
 	 * 
 	 */
 	public void startStopRecording(){
@@ -49,8 +49,7 @@ public class Recorder{
 	}
 	
 	/**
-	 * Returns the boolean recording so that the KeyboardGUI can know if notes 
-	 * are to be recorded or not (and if possible start a blinking red dot).
+	 * Returns the boolean recording so that the KeyboardGUI can know if notes are to be recorded or not.
 	 * 
 	 * 
 	 * @return recording True if notes are being recorded, if not false.
@@ -70,8 +69,7 @@ public class Recorder{
 	}
 	
 	/**
-	 * Plays recorded notes from recorded list and changes the playing boolean to true if
-	 * something is playing.
+	 * Plays recorded notes from recorded list and changes the playing boolean to true if something is playing.
 	 * 
 	 */
 	public void playRecorded(){
@@ -79,6 +77,9 @@ public class Recorder{
 			player.startPlaying(recorded, 50);
 	}
 	
+	/**
+	 * Stops playing the recorded list.(But it doesn't work as epected, because of there being too many threads simultanously, probably).
+	 */
 	public void stopPlaying(){
 		player.stop();
 		playing = false;

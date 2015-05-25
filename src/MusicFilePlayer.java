@@ -33,6 +33,8 @@ import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
 
 /**
+ * This class is used in its entirety as it is written for the Object First with Java book.
+ * 
  * Play music files.
  * This class is a modified version of javazoom.jl.player.advanced.AdvancedPlayer,
  * which is part of the javazoom JLayer library.

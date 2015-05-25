@@ -5,18 +5,30 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
+/**
+ * This class extends the JPanel class and overwrites the paint method, so that, when the additional method draw is called with the recording boolean true, the little red 'recording' dot is drawn. This class also implements KeyListener and it's methods, so that a Panel of this type can listen for that kind of action.
+ * 
+ * 
+ * @author Emmeli Hansson and Lovisa von Heine
+ * @date 2015-05-16
+ *
+ */
 public class OurJPanel extends JPanel implements KeyListener{
 	private boolean recording;
 	private int x;
 	private int y;
 	
+	/**
+	 * Constructor.
+	 */
 	public OurJPanel(){
 		super();
 	}
 	
 	
-	
+	/**
+	 * Paints a little red dot if recording is true. If recording is false, paints that dot in a different color which should be the same as the background.
+	 */
 	@Override
 	public void paint(Graphics g){
 		super.paint(g);
@@ -33,6 +45,13 @@ public class OurJPanel extends JPanel implements KeyListener{
 			}
 	}
 	
+	/**
+	 * A method that draws a little dot by calling repaint().
+	 * 
+	 * @param recording the boolean which decides what color the dot should be.
+	 * @param x the x coordinates at which the dot should be drawn.
+	 * @param y the y coordinates at wich the dot should be drawn.
+	 */
 	public void draw(boolean recording, int x, int y){
 		this.recording = recording;
 		this.x = x;
